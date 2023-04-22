@@ -46,7 +46,7 @@ public class RegistroGui extends javax.swing.JFrame {
 
         jLabel3.setText("REGISTRAR EMPLEADO");
 
-        jLabel4.setText("REGISTRAR USUARIO");
+        jLabel4.setText("REGISTRAR PACIENTE");
 
         btnIps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/hospital.png"))); // NOI18N
         btnIps.setText("IPS");
@@ -65,7 +65,7 @@ public class RegistroGui extends javax.swing.JFrame {
         });
 
         btnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/employee.png"))); // NOI18N
-        btnUser.setText("USUARIO");
+        btnUser.setText("PACIENTE");
         btnUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUserActionPerformed(evt);
@@ -97,7 +97,7 @@ public class RegistroGui extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                         .addComponent(btnUser)
                         .addGap(88, 88, 88))
                     .addGroup(layout.createSequentialGroup()

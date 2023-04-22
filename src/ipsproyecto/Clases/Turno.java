@@ -5,7 +5,7 @@
  */
 package ipsproyecto.Clases;
 
-import ipsproyecto.Clases.Models.Usuario;
+import ipsproyecto.Clases.Models.Paciente;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -19,14 +19,14 @@ public class Turno {
     private String Id;
     private String Tipo;
     private Date fecha;
-    private Usuario Usuario;
+    private Paciente Usuario;
     private static ArrayList<Turno> listaTurnosMedicamento = new ArrayList<Turno>();
     private static ArrayList<Turno> listaTurnosCitas = new ArrayList<Turno>();
 
     public Turno() {
     }
 
-    public Turno(String Id, String Tipo, Date fecha, Usuario Usuario) {
+    public Turno(String Id, String Tipo, Date fecha, Paciente Usuario) {
         this.Id = Id;
         this.Tipo = Tipo;
         this.fecha = fecha;
@@ -66,11 +66,11 @@ public class Turno {
         }
     }
 
-    public Usuario getUsuario() {
+    public Paciente getUsuario() {
         return Usuario;
     }
 
-    public void setUsuario(Usuario Usuario) {
+    public void setUsuario(Paciente Usuario) {
         this.Usuario = Usuario;
     }
 

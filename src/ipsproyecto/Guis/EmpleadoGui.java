@@ -6,7 +6,7 @@
 package ipsproyecto.Guis;
 
 import ipsproyecto.Clases.Models.Empleado;
-import ipsproyecto.Clases.Models.Usuario;
+import ipsproyecto.Clases.Models.Paciente;
 import javax.swing.JOptionPane;
 
 /**

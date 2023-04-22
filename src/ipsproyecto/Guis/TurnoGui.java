@@ -6,7 +6,7 @@
 package ipsproyecto.Guis;
 
 import ipsproyecto.Clases.Turno;
-import ipsproyecto.Clases.Models.Usuario;
+import ipsproyecto.Clases.Models.Paciente;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -23,7 +23,7 @@ public class TurnoGui extends javax.swing.JFrame {
     int tamanoLista;
     
     Turno objTurn;
-    Usuario objUsuario;
+    Paciente objUsuario;
     public TurnoGui() {
         objTurn = new Turno();
         
@@ -75,7 +75,7 @@ public class TurnoGui extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar.setText("BuscarCliente");
+        btnBuscar.setText("Buscar Paciente");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -84,7 +84,7 @@ public class TurnoGui extends javax.swing.JFrame {
 
         txtNombre.setEnabled(false);
 
-        lblNombre.setText("Nombre Usuario");
+        lblNombre.setText("Nombre Paciente");
         lblNombre.setEnabled(false);
 
         btnAtender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/arrow.png"))); // NOI18N
@@ -184,15 +184,15 @@ public class TurnoGui extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String cedula = JOptionPane.showInputDialog(this, "Ingrese la Cedula");
         boolean bandera = false;
-        Usuario objPasajero2 = new Usuario();
-        Usuario[] buscarUsuario = objPasajero2.getObjUsuario();
+        Paciente objPasajero2 = new Paciente();
+        Paciente[] buscarUsuario = objPasajero2.getObjUsuario();
         for (int i = 0; i < buscarUsuario.length; i++) {
             if (buscarUsuario[i].getCedula().equals(cedula)) {
                 lblNombre.setEnabled(true);
                 txtNombre.setEnabled(true);
                 btnSolicitar.setEnabled(true);
                 txtNombre.setText(buscarUsuario[i].getNombre());
-                objUsuario=new Usuario(cedula, buscarUsuario[i].getNombre(), buscarUsuario[i].getDireccion(), buscarUsuario[i].getTelefono(), buscarUsuario[i].getCorreo());
+                objUsuario=new Paciente(cedula, buscarUsuario[i].getNombre(), buscarUsuario[i].getApellidos(), buscarUsuario[i].getTelefono(), buscarUsuario[i].getEdad());
                 bandera = true;
 
                 break;
@@ -210,7 +210,7 @@ public class TurnoGui extends javax.swing.JFrame {
         String Id;
         Date fecha=new Date();
         
-        Usuario Usuario=objUsuario;
+        Paciente Usuario=objUsuario;
         if(cbTipo.getSelectedIndex()==0){
             tamanoLista=objTurn.getListaTurnosCitas().size();
             Id="C"+(tamanoLista+1);

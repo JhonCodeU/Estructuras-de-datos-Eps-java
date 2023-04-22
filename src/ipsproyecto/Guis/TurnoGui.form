@@ -161,7 +161,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="BuscarCliente"/>
+        <Property name="text" type="java.lang.String" value="Buscar Paciente"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
@@ -174,7 +174,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblNombre">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre Usuario"/>
+        <Property name="text" type="java.lang.String" value="Nombre Paciente"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
