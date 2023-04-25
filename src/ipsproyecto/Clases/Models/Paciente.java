@@ -7,89 +7,98 @@ package ipsproyecto.Clases.Models;
 
 /**
  *
- * @author Mateo
+ * @author Johnd
  */
 public class Paciente {
+    private String nombre;
+    private String apellidos;
+    private String cedula;
+    private String telefono;
+    private Integer edad;
+    private String condicionEspecial;
+    private String turno;
 
-    private String Cedula;
-    private String Nombre;
-    private String Apellidos;
-    private String Telefono;
-    private String Edad;
-    private static Paciente[] objUsuario = new Paciente[20];
-
-    public Paciente() {
+    public Paciente(String cedula, String nombre, String apellidos, String telefono, Integer edad,
+            String condicionEspecial) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.edad = edad;
+        this.condicionEspecial = condicionEspecial;
     }
 
-    public Paciente(String Cedula, String Nombre, String Apellidos, String Telefono, String Edad) {
-        this.Cedula = Cedula;
-        this.Nombre = Nombre;
-        this.Apellidos = Apellidos;
-        this.Telefono = Telefono;
-        this.Edad = Edad;
-    }
-    
-    
-
-    public static Paciente[] getObjUsuario() {
-        return objUsuario;
-    }
-
-    public void setObjUsuario(Paciente objectUsuario) {
-        for (int i = 0; i < this.objUsuario.length; i++) {
-            if (this.objUsuario[i] == null) {
-                this.objUsuario[i] = objectUsuario;
-                break;
-            }
+    // Método para obtener la letra correspondiente al tipo de paciente
+    public String getTipoPaciente() {
+        if (this.condicionEspecial != "") {
+            return "A";
+        } else if (this.edad > 62) {
+            return "B";
+        } else {
+            return "C";
         }
     }
 
-    public void recorrerUsuario() {
-        for (int i = 0; i < this.objUsuario.length; i++) {
-            System.out.println(i + " " + objUsuario[i]);
-        }
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getCondicionEspecial() {
+        return condicionEspecial;
+    }
+
+    public void setCondicionEspecial(String condicionEspecial) {
+        this.condicionEspecial = condicionEspecial;
+    }
+
+    // Método para obtener el número correspondiente al turno
+    public String getNumeroTurno() {
+        return this.turno;
+    }
+
+    // Getters y setters
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getApellidos() {
-        return Apellidos;
+        return apellidos;
     }
 
-    public void setApellidos(String Apellidos) {
-        this.Apellidos = Apellidos;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
-
-    public String getEdad() {
-        return Edad;
-    }
-
-    public void setEdad(String Edad) {
-        this.Edad = Edad;
-    }
-    
-    
 
     public String getCedula() {
-        return Cedula;
+        return cedula;
     }
 
-    public void setCedula(String Cedula) {
-        this.Cedula = Cedula;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public Integer getEdad() {
+        return edad;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
-    
+
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
-
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
-    }
-
 }
