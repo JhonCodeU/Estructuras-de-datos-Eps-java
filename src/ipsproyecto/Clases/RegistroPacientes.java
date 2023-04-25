@@ -18,6 +18,7 @@ public class RegistroPacientes {
     private Boolean useDatosDePrueba = false;
 
     // Patron Singleton
+        
     public static RegistroPacientes getInstancia() {
         if (instacia == null) {
             instacia = new RegistroPacientes();

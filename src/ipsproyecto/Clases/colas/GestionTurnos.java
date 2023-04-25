@@ -116,7 +116,6 @@ public class GestionTurnos {
         listaTemporal.add(paciente);
       }
     }
-
     listaTemporal.addAll(listaTipoB);
     listaTemporal.addAll(listaTipoC);
 
