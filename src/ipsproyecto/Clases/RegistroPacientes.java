@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class RegistroPacientes {
     private static RegistroPacientes instacia = null;
     private ArrayList<Paciente> colaPacientes;
+    private Boolean useDatosDePrueba = false;
 
     // Patron Singleton
     public static RegistroPacientes getInstancia() {
@@ -37,6 +38,14 @@ public class RegistroPacientes {
     // obtener la lista de pacientes
     public ArrayList<Paciente> obtenerListaPacientes() {
         return colaPacientes;
+    }
+
+    public Boolean getUseDatosDePrueba() {
+        return useDatosDePrueba;
+    }
+
+    public void setUseDatosDePrueba(Boolean useDatosDePrueba) {
+        this.useDatosDePrueba = useDatosDePrueba;
     }
 
     public void datosDePrueba() {

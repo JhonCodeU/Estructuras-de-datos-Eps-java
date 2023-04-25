@@ -5,9 +5,6 @@
 package ipsproyecto.Guis;
 
 import javax.swing.table.DefaultTableModel;
-
-import ipsproyecto.Clases.RegistroPacientes;
-import ipsproyecto.Clases.Models.Paciente;
 import ipsproyecto.Clases.colas.GestionTurnos;
 import ipsproyecto.Clases.colas.Nodo;
 
@@ -21,20 +18,10 @@ public class AtenderPacienteGui extends javax.swing.JFrame {
      * Creates new form AtenderPacienteGui
      */
     private DefaultTableModel model = new DefaultTableModel();
-    private GestionTurnos gestionTurnos;
+    private GestionTurnos gestionTurnos = GestionTurnos.getInstancia();
 
     public AtenderPacienteGui() {
-        initDatosPruebaTurnos();
         initComponents();
-    }
-
-    public void initDatosPruebaTurnos() {
-        // agregar usuarios a la cola
-        RegistroPacientes registroPacientes = RegistroPacientes.getInstancia();
-        gestionTurnos = new GestionTurnos(); // Asignar un valor a la variable de instancia
-        for (Paciente paciente : registroPacientes.obtenerListaPacientes()) {
-            gestionTurnos.agregarPaciente(paciente);
-        }
     }
 
     /**
@@ -67,6 +54,7 @@ public class AtenderPacienteGui extends javax.swing.JFrame {
         model.addColumn("Turno");
         model.addColumn("Paciente");
         // Table
+
         tableRender();
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/team.png"))); // NOI18N
@@ -137,7 +125,7 @@ public class AtenderPacienteGui extends javax.swing.JFrame {
     private void tableRender() {
         model.setRowCount(0); // Limpiar la tabla
         Nodo turnos = gestionTurnos.mostrarTurnos();
-        System.out.println(turnos);
+        // System.out.println(turnos);
         while (turnos != null) {
             System.out.println(turnos.objeto.getTurno());
             Object[] rowData = { turnos.objeto.getTurno(), turnos.objeto.getNombre() };

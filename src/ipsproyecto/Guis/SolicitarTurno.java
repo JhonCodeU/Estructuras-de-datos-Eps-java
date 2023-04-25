@@ -236,16 +236,14 @@ public class SolicitarTurno extends javax.swing.JFrame {
         }
         for (Paciente paciente : pacientes) {
             if (paciente.getCedula().equals(cedula)) {
+                System.out.println(paciente.getNombre());
                 // si el paciente existe, abrir la ventana de solicitar turno
                 // Mensaje de que se ha encontrado el paciente
                 JOptionPane.showMessageDialog(null, "Paciente encontrado");
                 // setear nombre en txtNombre
                 jLabel4.setText(paciente.getNombre() + " " + paciente.getApellidos());
                 pacienteGlobal = paciente;
-                break;
-            } else {
-                // si el paciente no existe, mostrar mensaje de que no se ha encontrado
-                JOptionPane.showMessageDialog(null, "Paciente no encontrado");
+                System.out.println(pacienteGlobal.getNombre());
                 break;
             }
         }

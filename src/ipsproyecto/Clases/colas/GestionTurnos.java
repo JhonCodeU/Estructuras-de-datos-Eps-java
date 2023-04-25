@@ -13,12 +13,21 @@ import ipsproyecto.Clases.Models.Paciente;
  */
 
 public class GestionTurnos {
+  private static GestionTurnos instancia = null;
   private Nodo inicioCola, finalCola;
   private int tamano;
 
   public GestionTurnos() {
     inicioCola = null;
     finalCola = null;
+  }
+
+  // patron singleton
+  public static GestionTurnos getInstancia() {
+    if (instancia == null) {
+      instancia = new GestionTurnos();
+    }
+    return instancia;
   }
 
   // Metodo para saber si la cola esta vacia

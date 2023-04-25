@@ -5,6 +5,10 @@
  */
 package ipsproyecto.Guis;
 
+import ipsproyecto.Clases.RegistroPacientes;
+import ipsproyecto.Clases.Models.Paciente;
+import ipsproyecto.Clases.colas.GestionTurnos;
+
 /**
  *
  * @author jhond
@@ -14,8 +18,23 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
+
+    private GestionTurnos gestionTurnos = GestionTurnos.getInstancia();
+
     public Menu() {
         initComponents();
+        initDatosPruebaTurnos();
+    }
+
+    public void initDatosPruebaTurnos() {
+        // agregar usuarios a la cola
+        RegistroPacientes registroPacientes = RegistroPacientes.getInstancia();
+        if (!registroPacientes.getUseDatosDePrueba()) {
+            for (Paciente paciente : registroPacientes.obtenerListaPacientes()) {
+                gestionTurnos.agregarPaciente(paciente);
+            }
+        }
+        registroPacientes.setUseDatosDePrueba(true);
     }
 
     /**
