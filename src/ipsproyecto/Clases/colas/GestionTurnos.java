@@ -57,6 +57,7 @@ public class GestionTurnos {
 
   // Extraer de la cola
   public Paciente extraerPaciente() {
+
     if (!colaVacia()) {
       Paciente valor = inicioCola.objeto;
       if (inicioCola == finalCola) {
@@ -72,24 +73,18 @@ public class GestionTurnos {
   }
 
   // Metodo para mostrar los elementos de la cola
-  public Nodo mostrarTurnos() {
+  public void mostrarTurnos() {
     ordenarPorPrioridad();
-
-    if (inicioCola == null) {
-      return null;
+    Nodo recorrido = inicioCola;
+    while (recorrido != null) {
+      System.out.println(" Turno: " + recorrido.objeto.getTurno() + " - " + recorrido.objeto.getNombre() + " "
+          + recorrido.objeto.getApellidos());
+      recorrido = recorrido.siguiente;
     }
-    return inicioCola;
 
-    // System.out.println("Mostrando turnos");
-
-    // ver en consola
-    /*
-     * while (recorrido != null) {
-     * System.out.println(" Nombre: " + recorrido.objeto.getNombre()
-     * + " Prioridad: " + recorrido.objeto.getTipoPaciente());
-     * recorrido = recorrido.siguiente;
-     * }
-     */
+    if (recorrido == null) {
+      System.out.println("La cola esta vacia");
+    }
   }
 
   // Tamano de la cola
