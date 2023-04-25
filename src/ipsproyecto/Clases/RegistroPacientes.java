@@ -9,10 +9,21 @@ package ipsproyecto.Clases;
  * @author johnca
  */
 import ipsproyecto.Clases.Models.Paciente;
+
 import java.util.ArrayList;
 
 public class RegistroPacientes {
-    private static ArrayList<Paciente> colaPacientes;
+    private static RegistroPacientes instacia = null;
+    private ArrayList<Paciente> colaPacientes;
+
+    // Patron Singleton
+    public static RegistroPacientes getInstancia() {
+        if (instacia == null) {
+            instacia = new RegistroPacientes();
+            instacia.datosDePrueba();
+        }
+        return instacia;
+    }
 
     public RegistroPacientes() {
         colaPacientes = new ArrayList<Paciente>();

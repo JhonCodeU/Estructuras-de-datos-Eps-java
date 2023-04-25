@@ -5,7 +5,6 @@
 package ipsproyecto.Clases.colas;
 
 import java.util.ArrayList;
-
 import ipsproyecto.Clases.Models.Paciente;
 
 /**
@@ -66,8 +65,13 @@ public class GestionTurnos {
   // Metodo para mostrar los elementos de la cola
   public Nodo mostrarTurnos() {
     ordenarPorPrioridad();
-    Nodo recorrido = inicioCola;
-    System.out.println("Mostrando turnos");
+
+    if (inicioCola == null) {
+      return null;
+    }
+    return inicioCola;
+
+    // System.out.println("Mostrando turnos");
 
     // ver en consola
     /*
@@ -77,8 +81,6 @@ public class GestionTurnos {
      * recorrido = recorrido.siguiente;
      * }
      */
-
-    return recorrido;
   }
 
   // Tamano de la cola
@@ -116,5 +118,18 @@ public class GestionTurnos {
 
     // Limpia la lista temporal
     listaTemporal.clear();
+  }
+
+  // Método para obtener el turno de un paciente
+  public String obtenerTurno(String cedula) {
+    ordenarPorPrioridad();
+    Nodo recorrido = inicioCola;
+    while (recorrido != null) {
+      if (recorrido.objeto.getCedula().equals(cedula)) {
+        return recorrido.objeto.getTurno();
+      }
+      recorrido = recorrido.siguiente;
+    }
+    return null;
   }
 }

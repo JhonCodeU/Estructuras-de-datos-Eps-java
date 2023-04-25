@@ -4,9 +4,9 @@
  */
 package ipsproyecto.Guis;
 
-import java.util.ArrayList;
-
 import javax.swing.table.DefaultTableModel;
+
+import ipsproyecto.Clases.RegistroPacientes;
 import ipsproyecto.Clases.Models.Paciente;
 import ipsproyecto.Clases.colas.GestionTurnos;
 import ipsproyecto.Clases.colas.Nodo;
@@ -20,13 +20,21 @@ public class AtenderPacienteGui extends javax.swing.JFrame {
     /**
      * Creates new form AtenderPacienteGui
      */
+    private DefaultTableModel model = new DefaultTableModel();
+    private GestionTurnos gestionTurnos;
 
-    private ArrayList<Paciente> listaPacientes;
-
-    public AtenderPacienteGui(ArrayList<Paciente> pacientes) {
+    public AtenderPacienteGui() {
+        initDatosPruebaTurnos();
         initComponents();
-        System.out.println(pacientes);
-        this.listaPacientes = pacientes;
+    }
+
+    public void initDatosPruebaTurnos() {
+        // agregar usuarios a la cola
+        RegistroPacientes registroPacientes = RegistroPacientes.getInstancia();
+        gestionTurnos = new GestionTurnos(); // Asignar un valor a la variable de instancia
+        for (Paciente paciente : registroPacientes.obtenerListaPacientes()) {
+            gestionTurnos.agregarPaciente(paciente);
+        }
     }
 
     /**
@@ -39,37 +47,37 @@ public class AtenderPacienteGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        btnAtender = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnAtras = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        // Table Header
+        jTable1.setModel(model);
+        model.addColumn("Turno");
+        model.addColumn("Paciente");
+        // Table
         tableRender();
 
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/previous.png"))); // NOI18N
-        btnAtras.setText("Atras");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/team.png"))); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(btnAtras)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149,
-                                        Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)));
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(83, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAtras)
-                                .addGap(63, 63, 63)));
+        btnAtender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/doctor.png"))); // NOI18N
+        btnAtender.setText("Atender");
+        btnAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtenderActionPerformed(evt);
+            }
+        });
 
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/previous.png"))); // NOI18N
         btnAtras.setText("Atras");
@@ -79,33 +87,59 @@ public class AtenderPacienteGui extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 141,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(17, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAtras)
+                                .addGap(90, 90, 90)
+                                .addComponent(btnAtender)
+                                .addGap(81, 81, 81)));
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(35, 35, 35)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(14, 14, 14)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23,
+                                        Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnAtender)
+                                        .addComponent(btnAtras))
+                                .addGap(29, 29, 29)));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {
+        gestionTurnos.extraerPaciente();
+        // reder table
+        System.out.println("Atendiendo paciente");
+        tableRender();
+    }
+
     private void tableRender() {
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnAtras = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        // agregar usuarios a la cola
-        GestionTurnos gestionTurnos = new GestionTurnos();
-        // registroPacientes.datosDePrueba();
-
-        for (Paciente paciente : listaPacientes) {
-            gestionTurnos.agregarPaciente(paciente);
-        }
-
+        model.setRowCount(0); // Limpiar la tabla
         Nodo turnos = gestionTurnos.mostrarTurnos();
-
-        DefaultTableModel model = new DefaultTableModel();
-
-        // Create table
-        model.addColumn("Turno");
-        model.addColumn("Paciente");
-        jTable1.setModel(model);
+        System.out.println(turnos);
         while (turnos != null) {
+            System.out.println(turnos.objeto.getTurno());
             Object[] rowData = { turnos.objeto.getTurno(), turnos.objeto.getNombre() };
             model.addRow(rowData);
             turnos = turnos.siguiente;
@@ -159,14 +193,15 @@ public class AtenderPacienteGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
-                new AtenderPacienteGui(pacientes).setVisible(true);
+                new AtenderPacienteGui().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtender;
     private javax.swing.JButton btnAtras;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
